@@ -9,7 +9,7 @@
 </head><script type="text/javascript" charset="utf-8">$(function(){makePass(); $("#refresh").on("click",function(){makePass();}); $(".nowpass").on("click",function(){var copyText=document.querySelector("#input"); copyText.select(); document.execCommand("copy"); alert("copy"); copyText.blur();});});function makePass(){var c="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; var cl=c.length; var r=""; for(var i=0; i<12; i++){r +=c[Math.floor(Math.random()*cl)]}$("#input").attr("value",r); $(".nowpass").text(r);}</script> <style type="text/css" media="screen">body { font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif; font-weight: 600; padding: 1rem 3rem;}
 h1{
     font-size: 8rem; font-weight: 750;color: #f6d71f; letter-spacing: 3px;
-    background: -webkit-linear-gradient(0deg, #f6d71f, #f6bb1f);
+    background: -webkit-linear-gradient(90deg, #f6d71f, #f6bb1f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
