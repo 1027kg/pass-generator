@@ -36,10 +36,10 @@ $(function () {
 });
 
 function makePass() {
-  var c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&*+~=";
+  var c = "PQRSTUVWXYZabcd3456789!#$%efghijkABCDEFGHIJKLMNOlmnopqrstuvwxyz012&*+~=";
   var cl = c.length;
   var r = "";
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < 16; i++) {
     r += c[Math.floor(Math.random() * cl)]
   }
   $("#input").attr("value", shuffler(r));
