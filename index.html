@@ -42,7 +42,7 @@ function makePass() {
   for (var i = 0; i < 10; i++) {
     r += c[Math.floor(Math.random() * cl)]
   }
-  $("#input").attr("value", shuffler(r));
+  $("#input").attr("value",r);
   $(".nowpass").text(r);
 }
 </script>
