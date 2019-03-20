@@ -36,10 +36,10 @@ $(function () {
 });
 
 function makePass() {
-  var c = "PQRSTUVWXYZabcd3456789efghijk012ABCDE345MNOlm678no9pqrFGHIJKLstuvwxyz012";
+  var c = "PQRSTUVWXYZabcd3456789efghijkTUVWXYZabc012ABCD78no9pqrFGHIJKLstuvwxyE345MNOlm678no9pqrFGHIJKLstuvwxyz012";
   var cl = c.length;
   var r = "";
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 16; i++) {
     r += c[Math.floor(Math.random() * cl)]
   }
   $("#input").attr("value",r);
