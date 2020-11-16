@@ -40,9 +40,15 @@
 
     $(function() {
         makePass();
+        makePassStrong();
+        makeList();
+
         $("#refresh").on("click", function() {
             makePass();
+            makePassStrong();
+            makeList();
         });
+
         $(".nowpass").on("click", function() {
             var copyText = document.querySelector("#input");
             copyText.select();
@@ -50,10 +56,20 @@
             alert("copy");
             copyText.blur();
         });
+
+        $(".nowpassSrg").on("click", function() {
+            var copyText = document.querySelector("#inputSrg");
+            copyText.select();
+            document.execCommand("copy");
+            alert("copy");
+            copyText.blur();
+        });
+
     });
 
     function makePass() {
-        var c = "PQRSTUVabceWXYZabcd3456789efghjkTUVWXYZaefgbc012ABCD78no9pqrFGhjkHJKstuvwxyE345MmnNOm678no9popqrqrFGHJstuvwxyzKstuvwxyz012";
+        // var c = "PQRSTUVabceWXYZabcd3456789efghijkTUVWXYZaefgbc012ABCD78no9pqrFGhijkHIJKLstuvwxyE345MlmnNOlm678no9popqrqrFGHIJstuvwxyzKLstuvwxyz012";
+        var c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var cl = c.length;
         var r = "";
         for (var i = 0; i < 12; i++) {
@@ -61,6 +77,66 @@
         }
         $("#input").attr("value", r);
         $(".nowpass").text(r);
+    }
+
+    function makePassStrong() {
+        var c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&‘()*+,–./:;<=>?@[\]^_`{|}~";
+        var cl = c.length;
+        var r = "";
+        for (var i = 0; i < 20; i++) {
+            r += c[Math.floor(Math.random() * cl)]
+        }
+        $("#inputSrg").attr("value", r);
+        $(".nowpassSrg").text(r);
+    }
+
+    function makeList() {
+
+        var c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var cl = c.length;
+        var r = "";
+        var l = [];
+        for (var j = 0; l.length < 10; j++) {
+            for (var i = 0; i < 12; i++) {
+                r += c[Math.floor(Math.random() * cl)]
+            }
+            l.push(r);
+            r = "";
+        }
+        mLine = "";
+        for (let index = 0; index < l.length; index++) {
+            const element = l[index];
+            if (index != 9) {
+                mLine += element + "\r\n";
+            } else {
+                mLine += element;
+            }
+        }
+        $("#multiPassGen").val(mLine);
+
+        l = [];
+        c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&‘()*+,–./:;<=>?@[\]^_`{|}~";
+        cl = c.length;
+        r = "";
+        for (var j = 0; l.length < 10; j++) {
+            for (var i = 0; i < 20; i++) {
+                r += c[Math.floor(Math.random() * cl)]
+            }
+            l.push(r);
+            r = "";
+        }
+
+        mLine = "";
+        for (let index = 0; index < l.length; index++) {
+            const element = l[index];
+            if (index != 9) {
+                mLine += element + "\r\n";
+            } else {
+                mLine += element;
+            }
+        }
+        $("#multiPassStr").val(mLine);
+
     }
 </script>
 
@@ -71,7 +147,8 @@
         padding: 1rem 3rem;
     }
     
-    span#main {
+    span#main,
+    #mainSrg {
         font-size: 8rem;
         font-weight: 750;
         color: #f6d71f;
@@ -85,9 +162,11 @@
         font-size: 2.5rem;
         margin-top: 3rem;
         font-weight: 600;
+        color: #aaa;
     }
     
-    #input {
+    #input,
+    #inputSrg {
         border: none;
         color: #fff;
         height: 0px;
@@ -98,16 +177,53 @@
         outline: none !important;
         box-shadow: none !important;
     }
+    
+    h5 {
+        margin-bottom: 0;
+        margin-top: 20px;
+        color: #f6d71f;
+    }
+    
+    #multiPassGen,
+    #multiPassStr {
+        border: 1px solid #f6d71f;
+        padding: 10px;
+        color: #f6bb1f;
+        font-size: 1.25em;
+        margin-right: 20px;
+    }
 </style>
 
 <body>
-    <span style="color:#ddd;font-weight: 200;">1.01_pass-generator</span>
-    <br/>
-    <span class="nowpass" id="main" value="">this is password</span>
-    <br/>
-    <button type="button" class="btn btn-default btn-lg" id="refresh"> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Refresh</button><input type="text" name="" value="" id="input"></body>
+    <span style="color:#aaa;font-weight: 200;">1.02_pass-generator</span>
 
-<!-- <p id="testpass"></p> -->
+    <h5>General</h5>
+    <span class="nowpass" id="main" value="">this is password</span>
+
+    <br/>
+    <!-- <button type="button" class="btn btn-default btn-lg" id="refresh"> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Refresh</button><input type="text" name="" value="" id="input"> -->
+    <input type="text" name="" value="" id="input">
+
+    <h5>Strong</h5>
+    <span class="nowpassSrg" id="mainSrg" value="">this is password</span>
+
+    <br/>
+
+    <input type="text" name="" value="" id="inputSrg">
+
+    <br/>
+    <h5>List</h5>
+    <br/>
+    <div>
+        <textarea name="" id="multiPassGen" cols="35" rows="10" readonly></textarea>
+        <textarea name="" id="multiPassStr" cols="35" rows="10" readonly></textarea>
+    </div>
+
+    <button type="button" class="btn btn-default btn-lg" id="refresh"> 
+      <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Refresh
+    </button>
+
+</body>
 
 </html>
 <!-- make pass -->
