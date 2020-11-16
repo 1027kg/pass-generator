@@ -80,7 +80,7 @@
     }
 
     function makePassStrong() {
-        var c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&‘()*+,–./:;<=>?@[\]^_`{|}~";
+        c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|'";
         var cl = c.length;
         var r = "";
         for (var i = 0; i < 20; i++) {
@@ -115,7 +115,7 @@
         $("#multiPassGen").val(mLine);
 
         l = [];
-        c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&‘()*+,–./:;<=>?@[\]^_`{|}~";
+        c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|'";
         cl = c.length;
         r = "";
         for (var j = 0; l.length < 10; j++) {
@@ -191,9 +191,6 @@
         color: #f6bb1f;
         font-size: 1.25em;
         margin-right: 20px;
-        resize: none;
-        width:300px;
-        height:280px;
     }
 </style>
 
